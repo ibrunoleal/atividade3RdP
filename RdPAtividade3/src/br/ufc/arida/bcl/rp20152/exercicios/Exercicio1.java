@@ -1,10 +1,10 @@
 package br.ufc.arida.bcl.rp20152.exercicios;
 
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.distribution.MultivariateNormalDistribution;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
-import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
@@ -159,7 +159,20 @@ public class Exercicio1 {
 		
 		RealVector EIIIu_a_b = funcaoMiADadoB(EIII, ua, ub, xb);
 		System.out.println("\nVetor Ua_b para EIII:\n" + EIIIu_a_b);
-
+		
+		/*
+		 * ************ 1.6) ***************************************
+		 */
+		System.out.println("\n1.6)---------------------------------------");
+		double pEI = funcaoDistribuicaoCondicional(EIu_a_b, EIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EI: " + pEI);
+		
+		double pEII = funcaoDistribuicaoCondicional(EIIu_a_b, EIIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EII: " + pEII);
+		
+		double pEIII = funcaoDistribuicaoCondicional(EIIIu_a_b, EIIIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EIII: " + pEIII);
+		
 	}
 
 	
@@ -204,8 +217,12 @@ public class Exercicio1 {
 		RealVector vetoraux = new ArrayRealVector(xb.subtract(ub));
 		
 		RealVector resultado = maux.operate(vetoraux);
-		resultado = ua.subtract(resultado);
+		resultado = ua.add(resultado);
 		return resultado;
 	}
-
+	
+	public static double funcaoDistribuicaoCondicional(RealVector means, Matriz covariancias, RealVector xa) {
+		MultivariateNormalDistribution mnd = new MultivariateNormalDistribution(means.toArray(), covariancias.getData());
+		return mnd.density(xa.toArray());
+	}
 }
