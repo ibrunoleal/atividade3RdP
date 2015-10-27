@@ -1,9 +1,5 @@
 package br.ufc.arida.bcl.rp20152.exercicios;
 
-import java.lang.reflect.GenericArrayType;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
 
@@ -36,11 +32,11 @@ public class Exercicio1 {
 		System.out.println("1.1)---------------------------------------\n");
 		Matriz I = new Matriz(MatrixUtils.createRealIdentityMatrix(K.getRowDimension()).getData());
 
-		Matriz EI = new Matriz(I.scalarMultiply(k).getData());
+		Matriz EI = new Matriz(I.scalarMultiply(k));
 
-		Matriz KT = new Matriz(K.transpose().getData());
+		Matriz KT = new Matriz(K.transpose());
 
-		Matriz EII = new Matriz(K.multiply(KT).getData());
+		Matriz EII = new Matriz(K.multiply(KT));
 
 		Matriz EIII = new Matriz(MatrixUtils.createRealDiagonalMatrix(EII.getDiagonalVector().toArray()).getData());
 
@@ -108,35 +104,64 @@ public class Exercicio1 {
 		System.out.println("\nMatriz AIIba:\n" + AIIba);
 		System.out.println("\nMatriz AIIbb:\n" + AIIbb);
 		
+		Matriz AIII = new Matriz(MatrixUtils.inverse(EIII).getData());
+		Matriz AIIIaa = getParticaoAA(AIII);
+		Matriz AIIIab = getParticaoAB(AIII);
+		Matriz AIIIba = getParticaoBA(AIII);
+		Matriz AIIIbb = getParticaoBB(AIII);
+		System.out.println("\nMatriz AIII:\n" + AIII);
+		System.out.println("\nMatriz AIIIaa:\n" + AIIIaa);
+		System.out.println("\nMatriz AIIIab:\n" + AIIIab);
+		System.out.println("\nMatriz AIIIba:\n" + AIIIba);
+		System.out.println("\nMatriz AIIIbb:\n" + AIIIbb);
+		
 		/*
 		 * ************ 1.4) ***************************************
 		 */
+		System.out.println("1.4)---------------------------------------\n");
+		Matriz EIa_b = funcaoSigmaDeADadoB(EI);
+		System.out.println("\nMatriz EIa_b:\n" + EIa_b);
 		
+		Matriz EIIa_b = funcaoSigmaDeADadoB(EII);
+		System.out.println("\nMatriz EIa_b:\n" + EIIa_b);
 		
-		
+		Matriz EIIIa_b = funcaoSigmaDeADadoB(EIII);
+		System.out.println("\nMatriz EIa_b:\n" + EIIIa_b);
 	}
 
 	
 	
 	
 	public static Matriz getParticaoAA(Matriz matriz) {
-		Matriz aa = new Matriz(matriz.getSubMatrix(0, 1, 0, 1).getData());
+		Matriz aa = new Matriz(matriz.getSubMatrix(0, 1, 0, 1));
 		return aa;
 	}
 
 	public static Matriz getParticaoAB(Matriz matriz) {
-		Matriz ab = new Matriz(matriz.getSubMatrix(0, 1, 2, 2).getData());
+		Matriz ab = new Matriz(matriz.getSubMatrix(0, 1, 2, 2));
 		return ab;
 	}
 
 	public static Matriz getParticaoBA(Matriz matriz) {
-		Matriz ba = new Matriz(matriz.getSubMatrix(2, 2, 0, 1).getData());
+		Matriz ba = new Matriz(matriz.getSubMatrix(2, 2, 0, 1));
 		return ba;
 	}
 
 	public static Matriz getParticaoBB(Matriz matriz) {
-		Matriz bb = new Matriz(matriz.getSubMatrix(2, 2, 2, 2).getData());
+		Matriz bb = new Matriz(matriz.getSubMatrix(2, 2, 2, 2));
 		return bb;
+	}
+	
+	public static Matriz funcaoSigmaDeADadoB(Matriz matriz) {
+		Matriz xaa = getParticaoAA(matriz);
+		Matriz xab = getParticaoAB(matriz);
+		Matriz xbb = new Matriz(MatrixUtils.inverse(getParticaoBB(matriz)));
+		Matriz xba = getParticaoBA(matriz);
+		
+		Matriz resultado = new Matriz(xab.multiply(xbb));
+		resultado = new Matriz(resultado.multiply(xba));
+		resultado = new Matriz(xaa.subtract(resultado));
+		return resultado;
 	}
 
 }

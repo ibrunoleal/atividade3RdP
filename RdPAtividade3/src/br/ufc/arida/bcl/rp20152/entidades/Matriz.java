@@ -2,6 +2,7 @@ package br.ufc.arida.bcl.rp20152.entidades;
 
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
 
 @SuppressWarnings("serial")
@@ -9,6 +10,10 @@ public class Matriz extends Array2DRowRealMatrix {
 
 	public Matriz(double[][] dados) {
 		super(dados);
+	}
+	
+	public Matriz(RealMatrix matrix) {
+		super(matrix.getData());
 	}
 	
 	public RealVector getDiagonalVector() {
