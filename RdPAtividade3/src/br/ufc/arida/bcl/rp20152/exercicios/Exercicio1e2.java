@@ -184,6 +184,8 @@ public class Exercicio1e2 {
 		
 		double pEIIIxb = funcaoDistribuicaoCondicional(ub, EIIIbb, xb);
 		System.out.println("P(xb) para EIII: " + pEIIIxb);
+		
+		System.out.println("falta E[xb] e cov(xb)");
 	
 	
 	}//fim do main
