@@ -3,7 +3,6 @@ package br.ufc.arida.bcl.rp20152.exercicios;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.math3.distribution.TDistribution;
 import org.apache.commons.math3.special.Gamma;
 
 import br.ufc.arida.bcl.rp20152.grafico.Grafico;
@@ -25,30 +24,35 @@ public class Exercicio3 {
 		 */
 		System.out.println("\n3.1)---------------------------------------");
 		graficoStudent(0.01, "Exercicio 3.1 - v = 0.01");
+		System.out.println("Realizado o plot na tela com GUI");
 		
 		/*
 		 * ************ 3.2) ***************************************
 		 */
 		System.out.println("\n3.2)---------------------------------------");
 		graficoStudent(0.1, "Exercicio 3.2 - v = 0.1");
+		System.out.println("Realizado o plot na tela com GUI");
 		
 		/*
 		 * ************ 3.3) ***************************************
 		 */
 		System.out.println("\n3.3)---------------------------------------");
 		graficoStudent(1, "Exercicio 3.3 - v = 1");
+		System.out.println("Realizado o plot na tela com GUI");
 		
 		/*
 		 * ************ 3.4) ***************************************
 		 */
 		System.out.println("\n3.4)---------------------------------------");
 		graficoStudent(10, "Exercicio 3.4 - v = 10");
+		System.out.println("Realizado o plot na tela com GUI");
 		
 		/*
 		 * ************ 3.5) ***************************************
 		 */
 		System.out.println("\n3.5)---------------------------------------");
 		graficoStudent(100, "Exercicio 3.5 - v = 100");
+		System.out.println("Realizado o plot na tela com GUI");
 		
 		/*
 		 * ************ 3.6) ***************************************
@@ -66,6 +70,7 @@ public class Exercicio3 {
 		for (int i = 0; i < 1000 ; i++) {
 			PontoDoGrafico p = new PontoDoGrafico(x, funcaoStudent(x, u, y, v));
 			listaDePontos.add(p);
+			System.out.println(p);
 			x += 0.02;
 		}
 		Grafico g = new Grafico("Lista 3", exercicio);

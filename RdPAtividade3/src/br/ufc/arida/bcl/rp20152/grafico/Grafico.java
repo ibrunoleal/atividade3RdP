@@ -40,7 +40,7 @@ public class Grafico extends ApplicationFrame {
 	
 	public void construirParaExibicao() {
 		dataset = createDataset();
-		chart = createChart(dataset, "x", "p(x)");
+		chart = createChart(dataset, "x", "St");
 
 		//chart = ChartFactory.createBarChart(tituloDoGrafico, legendaX, tipoDeValorX, dataset);
 		//chart = ChartFactory.createLineChart(tituloDoGrafico, legendaX, tipoDeValorX, dataset);
