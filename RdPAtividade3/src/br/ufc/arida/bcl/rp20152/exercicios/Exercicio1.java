@@ -160,6 +160,11 @@ public class Exercicio1 {
 		RealVector EIIIu_a_b = funcaoMiADadoB(EIII, ua, ub, xb);
 		System.out.println("\nVetor Ua_b para EIII:\n" + EIIIu_a_b);
 
+		/*
+		 * ************ 1.6) ***************************************
+		 */
+		System.out.println("1.6)---------------------------------------\n");
+		
 	}
 
 	
