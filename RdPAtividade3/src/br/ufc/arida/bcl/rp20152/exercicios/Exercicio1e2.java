@@ -238,5 +238,6 @@ public class Exercicio1e2 {
 		MultivariateNormalDistribution mnd = new MultivariateNormalDistribution(means.toArray(), covariancias.getData());
 		return mnd.density(x.toArray());
 	}
+
 	
 }//fim da classe
