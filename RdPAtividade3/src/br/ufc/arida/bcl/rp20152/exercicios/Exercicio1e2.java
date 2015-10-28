@@ -1,14 +1,12 @@
 package br.ufc.arida.bcl.rp20152.exercicios;
 
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.distribution.MultivariateNormalDistribution;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
-import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
-
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
-public class Exercicio1 {
+public class Exercicio1e2 {
 
 	public static void main(String[] args) {
 
@@ -30,7 +28,7 @@ public class Exercicio1 {
 		// System.out.println("\nMatriz K:\n" + K);
 		// System.out.println("Escalar k: " + k);
 
-		System.out.println("Exercícios 1)\n");
+		System.out.println("Exercício 1)\n");
 
 		/*
 		 * ************ 1.1) ***************************************
@@ -159,13 +157,36 @@ public class Exercicio1 {
 		
 		RealVector EIIIu_a_b = funcaoMiADadoB(EIII, ua, ub, xb);
 		System.out.println("\nVetor Ua_b para EIII:\n" + EIIIu_a_b);
-
+		
 		/*
 		 * ************ 1.6) ***************************************
 		 */
-		System.out.println("1.6)---------------------------------------\n");
+		System.out.println("\n1.6)---------------------------------------");
+		double pEIxa_xb = funcaoDistribuicaoCondicional(EIu_a_b, EIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EI: " + pEIxa_xb);
 		
-	}
+		double pEIIxa_xb = funcaoDistribuicaoCondicional(EIIu_a_b, EIIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EII: " + pEIIxa_xb);
+		
+		double pEIIIxa_xb = funcaoDistribuicaoCondicional(EIIIu_a_b, EIIIa_b, xa);
+		System.out.println("\nProbabilidade de xa|xb para EIII: " + pEIIIxa_xb);
+		
+		/*
+		 * Exercicio 2
+		 */
+		System.out.println("\nExercício 2)\n");
+		
+		double pEIxb = funcaoDistribuicaoCondicional(ub, EIbb, xb);
+		System.out.println("P(xb) para EI: " + pEIxb);
+		
+		double pEIIxb = funcaoDistribuicaoCondicional(ub, EIIbb, xb);
+		System.out.println("P(xb) para EII: " + pEIIxb);
+		
+		double pEIIIxb = funcaoDistribuicaoCondicional(ub, EIIIbb, xb);
+		System.out.println("P(xb) para EIII: " + pEIIIxb);
+	
+	
+	}//fim do main
 
 	
 	
@@ -209,8 +230,13 @@ public class Exercicio1 {
 		RealVector vetoraux = new ArrayRealVector(xb.subtract(ub));
 		
 		RealVector resultado = maux.operate(vetoraux);
-		resultado = ua.subtract(resultado);
+		resultado = ua.add(resultado);
 		return resultado;
 	}
-
-}
+	
+	public static double funcaoDistribuicaoCondicional(RealVector means, Matriz covariancias, RealVector x) {
+		MultivariateNormalDistribution mnd = new MultivariateNormalDistribution(means.toArray(), covariancias.getData());
+		return mnd.density(x.toArray());
+	}
+	
+}//fim da classe
