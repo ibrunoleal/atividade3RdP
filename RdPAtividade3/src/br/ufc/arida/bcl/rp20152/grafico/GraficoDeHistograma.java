@@ -34,7 +34,7 @@ public class GraficoDeHistograma extends ApplicationFrame {
 	}
 
 	public void construirParaExibicao() {
-		createDataset();
+		
 		chart = createChart("valor", "H");
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
@@ -44,6 +44,7 @@ public class GraficoDeHistograma extends ApplicationFrame {
 	
 	public void adicionarSerie(List<Double> valores) {
 		series.addAll(valores);
+		createDataset();
 	}
 	
 	private void createDataset() {
@@ -79,6 +80,11 @@ public class GraficoDeHistograma extends ApplicationFrame {
 		return chart;
 	}
 	
+	
+
+	public HistogramDataset getDataSet() {
+		return dataSet;
+	}
 
 	/**
 	 * Exibe o grafico na tela em uma janela de aplicacao
