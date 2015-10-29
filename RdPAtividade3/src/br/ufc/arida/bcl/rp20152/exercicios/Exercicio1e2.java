@@ -4,6 +4,8 @@ import org.apache.commons.math3.distribution.MultivariateNormalDistribution;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealVector;
+import org.apache.commons.math3.stat.descriptive.moment.Variance;
+
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
 public class Exercicio1e2 {
@@ -184,10 +186,12 @@ public class Exercicio1e2 {
 		
 		double pEIIIxb = funcaoDistribuicaoCondicional(ub, EIIIbb, xb);
 		System.out.println("P(xb) para EIII: " + pEIIIxb);
+
+		System.out.println("\nE[xb] = ub: " + ub);
 		
-		System.out.println("falta E[xb] e cov(xb)");
-	
-	
+		System.out.println("\nPara EI -> cov[xb] = var[xb] = EIbb: " + EIbb);
+		System.out.println("Para EII -> cov[xb] = var[xb] = EIIbb: " + EIIbb);
+		System.out.println("Para EIII -> cov[xb] = var[xb] = EIIIbb: " + EIIIbb);
 	}//fim do main
 
 	
