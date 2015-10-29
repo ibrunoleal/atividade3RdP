@@ -15,9 +15,7 @@ public class Exercicio5Functions {
 		}
 	}
 	
-	
-	
-	public double funcaoPx(double x, int N, double h, List<Double> data) {	
+	public double funcaoParzelKernelPx(double x, int N, double h, List<Double> data) {	
 		double sum = 0;
 		for (int i = 0; i < N; i++) {
 			double atemp = (x - data.get(i))/h;
@@ -30,9 +28,7 @@ public class Exercicio5Functions {
 		return px;
 	}
 	
-	
-	
-	public List<PontoDoGrafico> getListaDePontosGraficoPx(double h, List<Double> data, double minIntervalo, double maxIntervalo, int quantidadeDePontos) {
+	public List<PontoDoGrafico> getListaDePontosDoGraficoParzelPx(double h, List<Double> data, double minIntervalo, double maxIntervalo, int quantidadeDePontos) {
 		double intervaloTotal = maxIntervalo - minIntervalo;
 		double tamanhoDeCadaIntervalo = intervaloTotal / quantidadeDePontos;
 		
@@ -40,7 +36,7 @@ public class Exercicio5Functions {
 		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
 		for (int i = 0; i < quantidadeDePontos; i++) {
 			double x = xTemp;
-			double resultado = funcaoPx(x, data.size(), h, data);
+			double resultado = funcaoParzelKernelPx(x, data.size(), h, data);
 			PontoDoGrafico ponto = new PontoDoGrafico(x, resultado);
 			listaDePontos.add(ponto);
 			xTemp += tamanhoDeCadaIntervalo;
@@ -48,4 +44,34 @@ public class Exercicio5Functions {
 		
 		return listaDePontos;
 	}
+	
+	
+	public double funcaoGaussianKernelPx(double x, int N, double h, List<Double> data) {
+		double sum = 0;
+		for (int i = 0; i < N; i++) {
+			double a = -( Math.pow((x - data.get(i)) , 2.0) / (2.0 * Math.pow(h, 2.0) ) );
+			double b = Math.exp(a);
+			double c = 1.0 / (h * Math.sqrt(2 * Math.PI) );
+			sum += (c * b);
+		}
+		return sum;
+	}
+	
+	public List<PontoDoGrafico> getListaDePontosDoGraficoGaussianPx(double h, List<Double> data, double minIntervalo, double maxIntervalo, int quantidadeDePontos) {
+		double intervaloTotal = maxIntervalo - minIntervalo;
+		double tamanhoDeCadaIntervalo = intervaloTotal / quantidadeDePontos;
+		
+		double xTemp = minIntervalo;
+		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
+		for (int i = 0; i < quantidadeDePontos; i++) {
+			double x = xTemp;
+			double resultado = funcaoGaussianKernelPx(x, data.size(), h, data);
+			PontoDoGrafico ponto = new PontoDoGrafico(x, resultado);
+			listaDePontos.add(ponto);
+			xTemp += tamanhoDeCadaIntervalo;
+		}
+		
+		return listaDePontos;
+	}
+
 }
