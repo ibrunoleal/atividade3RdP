@@ -59,7 +59,6 @@ public class GraficoDeBarraComOverlay extends ApplicationFrame {
 		}
 		
 		CategoryItemRenderer rendererBar = new BarRenderer();
-		rendererBar.setItemLabelsVisible(true);
 		//rendererBar.setItemLabelsVisible(true);
 		plot.setDataset(barDataSet);
         plot.setRenderer(rendererBar);

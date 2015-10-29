@@ -5,12 +5,8 @@ import java.util.List;
 
 
 import org.apache.commons.math3.distribution.NormalDistribution;
-import org.apache.commons.math3.random.EmpiricalDistribution;
-import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
-import br.ufc.arida.bcl.rp20152.grafico.Grafico;
-import br.ufc.arida.bcl.rp20152.grafico.GraficoDeBarra;
 import br.ufc.arida.bcl.rp20152.grafico.GraficoDeBarraComOverlay;
 import br.ufc.arida.bcl.rp20152.grafico.GraficoDeHistograma;
 import br.ufc.arida.bcl.rp20152.grafico.PontoDoGrafico;
@@ -99,14 +95,4 @@ public class Exercicio4 {
 		return pi * nd.density(x);
 	}
 
-	public static double[] calcHistogram(double[] data, int numBins) {
-		double[] histogram = new double[numBins];
-		EmpiricalDistribution distribution = new EmpiricalDistribution(numBins);
-		distribution.load(data);
-		int k = 0;
-		for (SummaryStatistics stats : distribution.getBinStats()) {
-			histogram[k++] = stats.getN();
-		}
-		return histogram;
-	}
 }
