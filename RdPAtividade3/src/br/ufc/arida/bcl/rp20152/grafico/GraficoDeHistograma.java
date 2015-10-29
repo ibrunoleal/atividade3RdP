@@ -4,17 +4,18 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.statistics.HistogramDataset;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 @SuppressWarnings("serial")
-public class GraficoDeHistograma extends ApplicationFrame {
+public class GraficoDeHistograma extends JFrame {
 	
 	private JFreeChart chart;
 	
@@ -31,6 +32,7 @@ public class GraficoDeHistograma extends ApplicationFrame {
 		this.tituloDoGrafico = tituloDoGrafico;
 		series = new ArrayList<Double>();
 		this.bin = bin;
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
 	public void construirParaExibicao() {

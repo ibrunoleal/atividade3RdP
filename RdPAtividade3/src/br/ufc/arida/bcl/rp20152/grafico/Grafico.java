@@ -4,19 +4,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class Grafico extends ApplicationFrame {
+public class Grafico extends JFrame {
 	/**
 	 * 
 	 */
@@ -36,6 +37,7 @@ public class Grafico extends ApplicationFrame {
 		super(tituloDaAplicacao);
 		this.tituloDoGrafico = tituloDoGrafico;
 		series = new ArrayList<XYSeries>();
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 	public void construirParaExibicao() {

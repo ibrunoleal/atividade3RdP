@@ -3,6 +3,8 @@ package br.ufc.arida.bcl.rp20152.grafico;
 import java.awt.Color;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -11,11 +13,10 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.IntervalXYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 @SuppressWarnings("serial")
-public class GraficoDeBarra extends ApplicationFrame {
+public class GraficoDeBarra extends JFrame {
 
 	private List<PontoDoGrafico> pontosDoGrafico;
 	
@@ -34,6 +35,7 @@ public class GraficoDeBarra extends ApplicationFrame {
 		final ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
 		setContentPane(chartPanel);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 	public IntervalXYDataset createDataset() {

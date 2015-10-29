@@ -16,6 +16,12 @@ public class Exercicio4 {
 	public static void main(String[] args) {
 		
 		/*
+		 * Exercicio 4
+		 */
+		System.out.println("\nExercício 4)\n");
+		
+		
+		/*
 		 * Carregamento dos dados de entrada para a lista
 		 */
 		FileHandler fileHandler = new FileHandler("dataB.csv", ";");

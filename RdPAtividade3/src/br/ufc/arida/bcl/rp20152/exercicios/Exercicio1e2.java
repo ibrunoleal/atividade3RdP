@@ -4,8 +4,6 @@ import org.apache.commons.math3.distribution.MultivariateNormalDistribution;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealVector;
-import org.apache.commons.math3.stat.descriptive.moment.Variance;
-
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
 public class Exercicio1e2 {

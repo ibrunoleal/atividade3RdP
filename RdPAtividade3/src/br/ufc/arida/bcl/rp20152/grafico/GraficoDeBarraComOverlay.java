@@ -3,6 +3,8 @@ package br.ufc.arida.bcl.rp20152.grafico;
 import java.awt.Color;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
@@ -14,11 +16,10 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 @SuppressWarnings("serial")
-public class GraficoDeBarraComOverlay extends ApplicationFrame {
+public class GraficoDeBarraComOverlay extends JFrame {
 
 	private CategoryPlot plot;
 	
@@ -45,6 +46,7 @@ public class GraficoDeBarraComOverlay extends ApplicationFrame {
 		final ChartPanel chartPanel = new ChartPanel(grafico);
 		chartPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
 		setContentPane(chartPanel);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 	
 	public void setDataSet() {
