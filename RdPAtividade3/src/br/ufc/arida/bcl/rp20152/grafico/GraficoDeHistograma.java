@@ -35,7 +35,7 @@ public class GraficoDeHistograma extends ApplicationFrame {
 
 	public void construirParaExibicao() {
 		
-		chart = createChart("valor", "H");
+		chart = createChart("x", "y");
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
 		chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));

@@ -7,10 +7,10 @@ import java.util.List;
 import org.apache.commons.math3.distribution.NormalDistribution;
 import org.apache.commons.math3.random.EmpiricalDistribution;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
-import org.jfree.data.statistics.HistogramType;
 
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
 import br.ufc.arida.bcl.rp20152.grafico.Grafico;
+import br.ufc.arida.bcl.rp20152.grafico.GraficoDeBarra;
 import br.ufc.arida.bcl.rp20152.grafico.GraficoDeHistograma;
 import br.ufc.arida.bcl.rp20152.grafico.PontoDoGrafico;
 
@@ -29,14 +29,11 @@ public class Exercicio4 {
 		gh.adicionarSerie(listaDeValores);
 		//gh.exibirGrafico();
 		
-		
 		double fatorDeNormalizacao = 0;
 		for (int i = 0; i < bin; i++) {
 			double value = gh.getDataSet().getYValue(0, i);
 			fatorDeNormalizacao += value;
-			System.out.println(value);
 		}
-		System.out.println(fatorDeNormalizacao);
 		
 		List<PontoDoGrafico> pontosNormalizados = new ArrayList<PontoDoGrafico>();
 		for (int i = 0; i < bin; i++) {
@@ -46,10 +43,13 @@ public class Exercicio4 {
 			pontosNormalizados.add(p);
 		}
 		
+		GraficoDeBarra gb = new GraficoDeBarra("Histograma Normalizado", pontosNormalizados, "x", "y");
+		gb.exibirGrafico();
+		
 		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
-		double[] medias = {-8.0,16.5,50.0};
+		double[] medias = {-7.0,16.5,50.0};
 		double[] pis = {0.4,0.33,0.27};
-		double desvioPadrao = 3.84;
+		double desvioPadrao = 1.0;
 		double qtdDePontos = 1000;
 		double minIntervalo = -20.0;
 		double maxIntervalo = 60.0;
@@ -67,7 +67,7 @@ public class Exercicio4 {
 		
 		Grafico g = new Grafico("Exercicio 4", "Exercicio 4");
 		g.adicionarSerie(listaDePontos, "p(x)");
-		g.exibirGraficoComOverlay(gh.getDataSet());
+		g.exibirGrafico();
 	}
 	
 	public static double pX(double x, double[] pis, double[] medias, double desvioPadra) {
