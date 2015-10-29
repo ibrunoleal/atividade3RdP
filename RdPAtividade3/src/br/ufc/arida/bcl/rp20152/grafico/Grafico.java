@@ -46,7 +46,7 @@ public class Grafico extends ApplicationFrame {
 		//chart = ChartFactory.createLineChart(tituloDoGrafico, legendaX, tipoDeValorX, dataset);
 		
 		ChartPanel chartPanel = new ChartPanel(chart);
-		chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+		chartPanel.setPreferredSize(new java.awt.Dimension(1280, 720));
 		setContentPane(chartPanel);
 	}
 	

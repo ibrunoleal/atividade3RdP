@@ -11,6 +11,7 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
 import br.ufc.arida.bcl.rp20152.grafico.Grafico;
 import br.ufc.arida.bcl.rp20152.grafico.GraficoDeBarra;
+import br.ufc.arida.bcl.rp20152.grafico.GraficoDeBarraComOverlay;
 import br.ufc.arida.bcl.rp20152.grafico.GraficoDeHistograma;
 import br.ufc.arida.bcl.rp20152.grafico.PontoDoGrafico;
 
@@ -43,20 +44,32 @@ public class Exercicio4 {
 			pontosNormalizados.add(p);
 		}
 		
-		GraficoDeBarra gb = new GraficoDeBarra("Histograma Normalizado", pontosNormalizados, "x", "y");
-		gb.exibirGrafico();
+//		GraficoDeBarra gb = new GraficoDeBarra("Histograma Normalizado", pontosNormalizados, "x", "y");
+//		gb.exibirGrafico();
 		
-		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
-		double[] medias = {-7.0,16.5,50.0};
-		double[] pis = {0.4,0.33,0.27};
-		double desvioPadrao = 1.0;
-		double qtdDePontos = 1000;
+
+		/*
+		 * valores para o que a questao pede com desvio padrao = 1.
+		 * Porem o grafico não fica bem ajustado.
+		 */
+//		double[] medias = {-15.5,17.0,55.0};
+//		double[] pis = {0.225,0.13,0.16};
+//		double desvioPadrao = 1.0;
+		/*
+		 * valores que ficam melhor para ajustar o grafico (no olhometro).
+		 */
+		double[] medias = {-15.5,14.5,54.5};
+		double[] pis = {0.8,0.5,0.57};
+		double desvioPadrao = 3.6;
+		
+		double qtdDePontos = 500;
 		double minIntervalo = -20.0;
 		double maxIntervalo = 60.0;
 		double intervaloTotal = maxIntervalo - minIntervalo;
 		double tamanhoDeCadaIntervalo = intervaloTotal / qtdDePontos;
 		double xTemp = minIntervalo;
 		
+		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
 		for (int i = 0; i < qtdDePontos; i++) {
 			double x = xTemp;
 			double resultado = (pX(x, pis, medias, desvioPadrao));
@@ -65,9 +78,12 @@ public class Exercicio4 {
 			xTemp += tamanhoDeCadaIntervalo;
 		}
 		
-		Grafico g = new Grafico("Exercicio 4", "Exercicio 4");
-		g.adicionarSerie(listaDePontos, "p(x)");
-		g.exibirGrafico();
+//		Grafico g = new Grafico("Exercicio 4", "Exercicio 4");
+//		g.adicionarSerie(listaDePontos, "p(x)");
+//		g.exibirGrafico();
+		
+		GraficoDeBarraComOverlay grafico = new GraficoDeBarraComOverlay("Exercicio 4", pontosNormalizados, listaDePontos, "X", "Y");
+		grafico.exibirGrafico();
 	}
 	
 	public static double pX(double x, double[] pis, double[] medias, double desvioPadra) {
