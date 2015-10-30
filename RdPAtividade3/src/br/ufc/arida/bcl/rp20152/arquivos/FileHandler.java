@@ -87,7 +87,7 @@ public class FileHandler {
 	}
 	
 
-	public List<Double> getVetor() {
+	public List<Double> getVetor(int coluna) {
 		FileReader fileReader;
 		int numeroDeLinhas = getNumeroDeLinhas();
 		List<Double> vetor = new ArrayList<Double>();
@@ -99,7 +99,9 @@ public class FileHandler {
 
 				String linha = br.readLine();
 				while (linha != null) {
-					double valor = Double.parseDouble(linha);
+					String[] valores = linha.split(delimitador);
+					
+					double valor = Double.parseDouble(valores[coluna]);
 					vetor.add(valor);
 					linha = br.readLine();
 				}

@@ -2,9 +2,6 @@ package br.ufc.arida.bcl.rp20152.exercicios.ex5;
 
 import java.util.List;
 
-import org.apache.commons.math3.linear.ArrayRealVector;
-import org.apache.commons.math3.linear.RealVector;
-
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
 import br.ufc.arida.bcl.rp20152.grafico.Grafico;
 import br.ufc.arida.bcl.rp20152.grafico.PontoDoGrafico;
@@ -20,7 +17,7 @@ public class Exercicio5 {
 		
 		
 		FileHandler fileHandler = new FileHandler("dataB.csv", ";");
-		List<Double> dataB = fileHandler.getVetor();
+		List<Double> dataB = fileHandler.getVetor(0);
 		
 		double min = -20.0;
 		double max = 60.0;
