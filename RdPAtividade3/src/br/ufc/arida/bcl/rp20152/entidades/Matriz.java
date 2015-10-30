@@ -16,6 +16,10 @@ public class Matriz extends Array2DRowRealMatrix {
 		super(matrix.getData());
 	}
 	
+	public Matriz(int dimensaoDeLinhas, int dimensaoDeColunas) {
+		super(dimensaoDeLinhas, dimensaoDeColunas);
+	}
+	
 	public RealVector getDiagonalVector() {
 		if (isSquare()) {
 			RealVector vetorDiagonal = new ArrayRealVector(getRowDimension());
