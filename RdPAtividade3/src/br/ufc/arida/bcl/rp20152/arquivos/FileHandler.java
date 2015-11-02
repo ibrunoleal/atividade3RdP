@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufc.arida.bcl.rp20152.entidades.Matriz;
+
 public class FileHandler {
 	
 	/**
@@ -119,5 +121,25 @@ public class FileHandler {
 		return vetor;
 	}
 	
+	public Matriz getMatriz() {
+		int numeroDeLinhas = getNumeroDeLinhas();
+		int numeroDeColunas = getNumeroDeColunas();
+		Matriz matriz = null;
+		
+		if (numeroDeColunas > 0) {
+			matriz = new Matriz(numeroDeLinhas, numeroDeColunas);
+			for (int i = 0; i < numeroDeColunas; i++) {
+				List<Double> coluna = getVetor(i);
+				double[] vetor = new double[coluna.size()];
+				for (int j = 0; j < coluna.size(); j++) {
+					vetor[j] = coluna.get(j);
+				}
+				matriz.setColumn(i, vetor);
+			}
+		}
+		
+		return matriz;
+		
+	}
 	
 }
