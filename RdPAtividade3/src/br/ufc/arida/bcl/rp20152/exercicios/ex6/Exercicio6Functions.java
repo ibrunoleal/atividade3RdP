@@ -37,7 +37,6 @@ public class Exercicio6Functions {
 		Matriz A_I = new Matriz(MatrixUtils.inverse(A));
 		Matriz B = new Matriz(A_I.multiply(PHI_t));
 		RealVector r = B.operate(t);
-		System.out.println(PHI);
 		return r;
 	}
 	
