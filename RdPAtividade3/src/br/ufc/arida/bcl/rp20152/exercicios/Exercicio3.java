@@ -70,7 +70,6 @@ public class Exercicio3 {
 		for (int i = 0; i < 1000 ; i++) {
 			PontoDoGrafico p = new PontoDoGrafico(x, funcaoStudent(x, u, y, v));
 			listaDePontos.add(p);
-			System.out.println(p);
 			x += 0.02;
 		}
 		Grafico g = new Grafico("Lista 3", exercicio);
