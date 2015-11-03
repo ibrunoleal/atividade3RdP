@@ -25,7 +25,7 @@ public class Exercicio4 {
 		 * Carregamento dos dados de entrada para a lista
 		 */
 		FileHandler fileHandler = new FileHandler("dataB.csv", ";");
-		List<Double> listaDeValores = fileHandler.getVetor(0);
+		List<Double> listaDeValores = fileHandler.getVetorLista(0);
 		int bin = 80;
 		
 		GraficoDeHistograma gh = new GraficoDeHistograma("Exercicio 4", "Histograma do Exercicio 4", bin);

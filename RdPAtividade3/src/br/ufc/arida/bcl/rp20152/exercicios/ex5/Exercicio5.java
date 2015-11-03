@@ -17,7 +17,7 @@ public class Exercicio5 {
 		
 		
 		FileHandler fileHandler = new FileHandler("dataB.csv", ";");
-		List<Double> dataB = fileHandler.getVetor(0);
+		List<Double> dataB = fileHandler.getVetorLista(0);
 		
 		double min = -20.0;
 		double max = 60.0;

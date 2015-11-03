@@ -1,5 +1,8 @@
 package br.ufc.arida.bcl.rp20152.exercicios.ex6;
 
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.RealVector;
+
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
 public class Exercicio6 {
@@ -17,6 +20,12 @@ public class Exercicio6 {
 		}
 		//System.out.println(PHI);
 		
+		RealVector t = new ArrayRealVector(f.getVetorOutput());
+		
+		RealVector w = f.wML(PHI, t);
+		System.out.println(w);
+		
 	}
+
 
 }

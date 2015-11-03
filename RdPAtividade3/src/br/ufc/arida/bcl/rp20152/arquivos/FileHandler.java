@@ -89,7 +89,7 @@ public class FileHandler {
 	}
 	
 
-	public List<Double> getVetor(int coluna) {
+	public List<Double> getVetorLista(int coluna) {
 		FileReader fileReader;
 		int numeroDeLinhas = getNumeroDeLinhas();
 		List<Double> vetor = new ArrayList<Double>();
@@ -121,6 +121,15 @@ public class FileHandler {
 		return vetor;
 	}
 	
+	public double[] getVetor(int coluna) {
+		List<Double> lista = getVetorLista(coluna);
+		double[] vetor = new double[lista.size()];
+		for (int i = 0; i < lista.size(); i++) {
+			vetor[i] = lista.get(i);
+		}
+		return vetor;
+	}
+	
 	public Matriz getMatriz() {
 		int numeroDeLinhas = getNumeroDeLinhas();
 		int numeroDeColunas = getNumeroDeColunas();
@@ -129,7 +138,7 @@ public class FileHandler {
 		if (numeroDeColunas > 0) {
 			matriz = new Matriz(numeroDeLinhas, numeroDeColunas);
 			for (int i = 0; i < numeroDeColunas; i++) {
-				List<Double> coluna = getVetor(i);
+				List<Double> coluna = getVetorLista(i);
 				double[] vetor = new double[coluna.size()];
 				for (int j = 0; j < coluna.size(); j++) {
 					vetor[j] = coluna.get(j);
