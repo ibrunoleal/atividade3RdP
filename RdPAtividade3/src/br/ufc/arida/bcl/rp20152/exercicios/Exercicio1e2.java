@@ -46,9 +46,12 @@ public class Exercicio1e2 {
 
 		// System.out.println("\nMatriz Identidade de K:\n" + I);
 		System.out.println("\nMatriz EI:\n" + EI);
+		//System.out.println("\nMatriz EI:\n" + EI.toTexString());
 		// System.out.println("\nMatriz KT:\n" + KT);
 		System.out.println("\nMatriz EII:\n" + EII);
+//		System.out.println("\nMatriz EII:\n" + EII.toTexString());
 		System.out.println("\nMatriz EIII:\n" + EIII);
+//		System.out.println("\nMatriz EIII:\n" + EIII.toTexString());
 
 		/*
 		 * ************ 1.2) ***************************************
@@ -62,6 +65,11 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz EIab:\n" + EIab);
 		System.out.println("\nMatriz EIba:\n" + EIba);
 		System.out.println("\nMatriz EIbb:\n" + EIbb);
+		
+//		System.out.println("\nMatriz EIaa:\n" + EIaa.toTexString());
+//		System.out.println("\nMatriz EIab:\n" + EIab.toTexString());
+//		System.out.println("\nMatriz EIba:\n" + EIba.toTexString());
+//		System.out.println("\nMatriz EIbb:\n" + EIbb.toTexString());
 
 		Matriz EIIaa = getParticaoAA(EII);
 		Matriz EIIab = getParticaoAB(EII);
@@ -71,6 +79,11 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz EIIab:\n" + EIIab);
 		System.out.println("\nMatriz EIIba:\n" + EIIba);
 		System.out.println("\nMatriz EIIbb:\n" + EIIbb);
+		
+//		System.out.println("\nMatriz EIIaa:\n" + EIIaa.toTexString());
+//		System.out.println("\nMatriz EIIab:\n" + EIIab.toTexString());
+//		System.out.println("\nMatriz EIIba:\n" + EIIba.toTexString());
+//		System.out.println("\nMatriz EIIbb:\n" + EIIbb.toTexString());
 
 		Matriz EIIIaa = getParticaoAA(EIII);
 		Matriz EIIIab = getParticaoAB(EIII);
@@ -80,6 +93,11 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz EIIIab:\n" + EIIIab);
 		System.out.println("\nMatriz EIIIba:\n" + EIIIba);
 		System.out.println("\nMatriz EIIIbb:\n" + EIIIbb);
+		
+//		System.out.println("\nMatriz EIIIaa:\n" + EIIIaa.toTexString());
+//		System.out.println("\nMatriz EIIIab:\n" + EIIIab.toTexString());
+//		System.out.println("\nMatriz EIIIba:\n" + EIIIba.toTexString());
+//		System.out.println("\nMatriz EIIIbb:\n" + EIIIbb.toTexString());
 		
 		/*
 		 * ************ 1.3) ***************************************
@@ -97,6 +115,12 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz AIba:\n" + AIba);
 		System.out.println("\nMatriz AIbb:\n" + AIbb);
 		
+//		System.out.println("\nMatriz AI:\n" + AI.toTexString());
+//		System.out.println("\nMatriz AIaa:\n" + AIaa.toTexString());
+//		System.out.println("\nMatriz AIab:\n" + AIab.toTexString());
+//		System.out.println("\nMatriz AIba:\n" + AIba.toTexString());
+//		System.out.println("\nMatriz AIbb:\n" + AIbb.toTexString());
+		
 		Matriz AII = new Matriz(MatrixUtils.inverse(EII).getData());
 		Matriz AIIaa = getParticaoAA(AII);
 		Matriz AIIab = getParticaoAB(AII);
@@ -107,6 +131,12 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz AIIab:\n" + AIIab);
 		System.out.println("\nMatriz AIIba:\n" + AIIba);
 		System.out.println("\nMatriz AIIbb:\n" + AIIbb);
+		
+//		System.out.println("\nMatriz AII:\n" + AII.toTexString());
+//		System.out.println("\nMatriz AIIaa:\n" + AIIaa.toTexString());
+//		System.out.println("\nMatriz AIIab:\n" + AIIab.toTexString());
+//		System.out.println("\nMatriz AIIba:\n" + AIIba.toTexString());
+//		System.out.println("\nMatriz AIIbb:\n" + AIIbb.toTexString());
 		
 		Matriz AIII = new Matriz(MatrixUtils.inverse(EIII).getData());
 		Matriz AIIIaa = getParticaoAA(AIII);
@@ -119,18 +149,27 @@ public class Exercicio1e2 {
 		System.out.println("\nMatriz AIIIba:\n" + AIIIba);
 		System.out.println("\nMatriz AIIIbb:\n" + AIIIbb);
 		
+//		System.out.println("\nMatriz AIII:\n" + AIII.toTexString());
+//		System.out.println("\nMatriz AIIIaa:\n" + AIIIaa.toTexString());
+//		System.out.println("\nMatriz AIIIab:\n" + AIIIab.toTexString());
+//		System.out.println("\nMatriz AIIIba:\n" + AIIIba.toTexString());
+//		System.out.println("\nMatriz AIIIbb:\n" + AIIIbb.toTexString());
+		
 		/*
 		 * ************ 1.4) ***************************************
 		 */
 		System.out.println("1.4)---------------------------------------\n");
 		Matriz EIa_b = funcaoSigmaDeADadoB(EI);
 		System.out.println("\nMatriz EIa_b:\n" + EIa_b);
+//		System.out.println("\nMatriz EIa_b:\n" + EIa_b.toTexString());
 		
 		Matriz EIIa_b = funcaoSigmaDeADadoB(EII);
 		System.out.println("\nMatriz EIIa_b:\n" + EIIa_b);
+//		System.out.println("\nMatriz EIIa_b:\n" + EIIa_b.toTexString());
 		
 		Matriz EIIIa_b = funcaoSigmaDeADadoB(EIII);
 		System.out.println("\nMatriz EIIIa_b:\n" + EIIIa_b);
+//		System.out.println("\nMatriz EIIIa_b:\n" + EIIIa_b.toTexString());
 		
 		/*
 		 * ************ 1.5) ***************************************

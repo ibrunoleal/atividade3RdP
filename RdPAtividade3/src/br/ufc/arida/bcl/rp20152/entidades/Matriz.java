@@ -1,5 +1,7 @@
 package br.ufc.arida.bcl.rp20152.entidades;
 
+import java.text.DecimalFormat;
+
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealMatrix;
@@ -61,6 +63,28 @@ public class Matriz extends Array2DRowRealMatrix {
 			novoTexto += " ";
 		}
 		return novoTexto;
+	}
+	
+	public String toTexString() {
+		DecimalFormat df = new DecimalFormat("0.00000");
+		
+		String texto = "$\n<nome> = \\begin{pmatrix}\n";
+		for (int i = 0; i < getRowDimension(); i++) {
+			for (int j = 0; j < getColumnDimension(); j++) {
+				String elemento = df.format(getEntry(i, j));
+				texto += elemento;
+				if (j == (getColumnDimension() -1)) {
+					if (i != (getRowDimension() -1)) {
+						texto += " \\\\\n";
+					}
+				} else {
+					texto += " & ";
+				}
+				
+			}
+		}
+		texto += "\n\\end{pmatrix}\n$";
+		return texto;
 	}
 	
 	/**
