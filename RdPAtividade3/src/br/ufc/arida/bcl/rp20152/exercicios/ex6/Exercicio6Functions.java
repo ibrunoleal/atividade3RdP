@@ -1,8 +1,9 @@
 package br.ufc.arida.bcl.rp20152.exercicios.ex6;
 
-
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
 
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
@@ -10,23 +11,33 @@ import br.ufc.arida.bcl.rp20152.entidades.Matriz;
 
 public class Exercicio6Functions {
 	
-	private Matriz matrizDataCInput;
+	private Matriz matrizDataCLearningInput;
 	
-	private double[] vetorOutput;
+	private double[] vetorDataCLearningOutput;
+	
+	private Matriz matrizDataCValidationInput;
+	
+	private double[] vetorDataCValidationOutput;
 	
 	public Exercicio6Functions() {
 		FileHandler fileHandlerDataCInput = new FileHandler("dataC_input.csv", ",");
-		matrizDataCInput = fileHandlerDataCInput.getMatriz();
+		matrizDataCLearningInput = fileHandlerDataCInput.getMatriz();
 		
 		FileHandler fileHandlerDataCOutput = new FileHandler("dataC_output.csv", ";");
-		vetorOutput = fileHandlerDataCOutput.getVetor(0);
+		vetorDataCLearningOutput = fileHandlerDataCOutput.getVetor(0);
+		
+		FileHandler fileHandlerDataCValidationInput = new FileHandler("dataC_validation_input.csv", ";");
+		matrizDataCValidationInput = fileHandlerDataCValidationInput.getMatriz();
+		
+		FileHandler fileHandlerDataCValidationOutput = new FileHandler("dataC_validation_output.csv", ";");
+		vetorDataCValidationOutput = fileHandlerDataCValidationOutput.getVetor(0);
 	}
 	
 	public double phi(int x, int j) {
 		if (j == 0) {
 			return 1;
 		} else {
-			return matrizDataCInput.getEntry(x, j-1);
+			return matrizDataCLearningInput.getEntry(x, j-1);
 		}
 	}
 	
@@ -40,16 +51,27 @@ public class Exercicio6Functions {
 		return r;
 	}
 	
-
-	public Matriz getMatrizDataCInput() {
-		return matrizDataCInput;
+	public RealVector yPred(RealVector x, RealVector w) {
+		RealMatrix wm = new Array2DRowRealMatrix(w.toArray());
+		RealMatrix wt = wm.transpose();
+		return wt.operate(x);
 	}
 
-	public double[] getVetorOutput() {
-		return vetorOutput;
+	public Matriz getMatrizDataCLearningInput() {
+		return matrizDataCLearningInput;
 	}
 
+	public double[] getVetorDataCLearningOutput() {
+		return vetorDataCLearningOutput;
+	}
+
+	public Matriz getMatrizDataCValidationInput() {
+		return matrizDataCValidationInput;
+	}
+
+	public double[] getVetorDataCValidationOutput() {
+		return vetorDataCValidationOutput;
+	}
 	
-
 	
 }
