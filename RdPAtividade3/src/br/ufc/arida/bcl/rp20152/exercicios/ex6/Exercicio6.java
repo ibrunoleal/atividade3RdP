@@ -34,12 +34,15 @@ public class Exercicio6 {
 			}
 		}
 		
+		RealVector y = new ArrayRealVector(PHI_validation.getRowDimension());
 		for (int i = 0; i < PHI_validation.getRowDimension(); i++) {
 			RealVector xi = PHI_validation.getRowVector(i);
-			RealVector yi = f.yPred(xi, w);
-			System.out.println(yi);
+			double yi = f.yPred(xi, w);
+			y.setEntry(i, yi);
 		}
-		
+
+		double mse = f.MSE(new ArrayRealVector(f.getVetorDataCValidationOutput()), y);
+		System.out.println("MSE: " + mse);
 	}
 
 

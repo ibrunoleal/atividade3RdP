@@ -51,10 +51,22 @@ public class Exercicio6Functions {
 		return r;
 	}
 	
-	public RealVector yPred(RealVector x, RealVector w) {
+	public double yPred(RealVector x, RealVector w) {
 		RealMatrix wm = new Array2DRowRealMatrix(w.toArray());
 		RealMatrix wt = wm.transpose();
-		return wt.operate(x);
+		return wt.operate(x).getEntry(0);
+	}
+	
+	public double MSE(RealVector x, RealVector y) {
+		double sum = 0;
+		for (int i = 0; i < x.getDimension(); i++) {
+			double xi = x.getEntry(i);
+			double yi = y.getEntry(i);
+			double r = Math.pow((xi-yi), 2);
+			sum += r;
+		}
+		double n = x.getDimension();
+		return sum/n;
 	}
 
 	public Matriz getMatrizDataCLearningInput() {
