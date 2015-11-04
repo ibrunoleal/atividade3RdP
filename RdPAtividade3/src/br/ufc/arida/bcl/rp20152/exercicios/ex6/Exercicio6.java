@@ -1,9 +1,14 @@
 package br.ufc.arida.bcl.rp20152.exercicios.ex6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealVector;
 
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
+import br.ufc.arida.bcl.rp20152.grafico.Grafico;
+import br.ufc.arida.bcl.rp20152.grafico.PontoDoGrafico;
 
 public class Exercicio6 {
 
@@ -43,6 +48,15 @@ public class Exercicio6 {
 
 		double mse = f.MSE(new ArrayRealVector(f.getVetorDataCValidationOutput()), y);
 		System.out.println("MSE: " + mse);
+		
+		List<PontoDoGrafico> listaDePontos = new ArrayList<PontoDoGrafico>();
+		for (int i = 0; i < y.getDimension(); i++) {
+			PontoDoGrafico p = new PontoDoGrafico(new ArrayRealVector(f.getVetorDataCValidationOutput()).getEntry(i), y.getEntry(i));
+			listaDePontos.add(p);
+		}
+		Grafico g = new Grafico("Lista 3", "");
+		g.adicionarSerie(listaDePontos, "");
+		g.exibirGrafico();
 	}
 
 

@@ -18,10 +18,5 @@
 	<classpathentry kind="lib" path="libs/orsonpdf-1.6-eval.jar"/>
 	<classpathentry kind="lib" path="libs/servlet.jar"/>
 	<classpathentry kind="lib" path="libs/swtgraphics2d.jar"/>
-	<classpathentry kind="lib" path="libs/weka.jar" sourcepath="/home/brunoleal/Desktop/weka-3-6-13.zip">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/home/brunoleal/Desktop/weka-3-6-13.zip!/weka-3-6-13/doc"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
