@@ -23,7 +23,6 @@ public class Exercicio6 {
 				PHI.setEntry(x, j, elemento);
 			}
 		}
-		//System.out.println(PHI);
 		
 		RealVector t = new ArrayRealVector(f.getVetorDataCLearningOutput());
 		
@@ -58,7 +57,11 @@ public class Exercicio6 {
 		g.adicionarSerie(listaDePontos, "");
 		g.exibirGrafico();
 		
-		f.kMeans(2);
+		Matriz PHI2basis2 = f.getMatrizPHI2(f.getMatrizDataCLearningInput(), 2);
+		System.out.println(PHI2basis2);
+		
+		RealVector w2 = f.wML(PHI2basis2, t);
+		System.out.println(w2);
 	}
 
 

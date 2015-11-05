@@ -1,5 +1,8 @@
 package br.ufc.arida.bcl.rp20152.exercicios.ex6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -60,6 +63,14 @@ public class Exercicio6Functions {
 		return wt.operate(x).getEntry(0);
 	}
 	
+	public double phi2(RealVector x, RealVector u) {
+		RealVector vtemp = x.subtract(u);
+		double norma2 = Math.pow(vtemp.getNorm(), 2);
+		double a = -1 * norma2 / 4.0;
+		double e = Math.exp(a);
+		return e;
+	}
+	
 	public double MSE(RealVector x, RealVector y) {
 		double sum = 0;
 		for (int i = 0; i < x.getDimension(); i++) {
@@ -88,22 +99,43 @@ public class Exercicio6Functions {
 		return vetorDataCValidationOutput;
 	}
 	
-	public void kMeans(int numeroDeClusters) {
+	public List<RealVector> kMeans(int numeroDeClusters) {
 		SimpleKMeans kMeans = new SimpleKMeans();
-		
+		List<RealVector> listaDeMeans = new ArrayList<RealVector>();
 		try {
-			kMeans.setNumClusters(2);
+			kMeans.setNumClusters(numeroDeClusters);
 			Instances instancias = DataSource.read("dataC_input.csv");
 			kMeans.buildClusterer(instancias);
 			Instances centroids = kMeans.getClusterCentroids();
 			for (int i = 0; i < centroids.numInstances(); i++) {
-				System.out.println("Centroid " + centroids.instance(i));
+				RealVector means = new ArrayRealVector(centroids.instance(i).numAttributes());
+				for (int j = 0; j < centroids.instance(i).numAttributes(); j++) {
+					double valor = centroids.instance(i).value(j);
+					means.setEntry(j, valor);
+				}
+				listaDeMeans.add(means);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return listaDeMeans;
 	}
 
+	public Matriz getMatrizPHI2(Matriz X, int numBasis) {
+		Matriz PHI2 = new Matriz(X.getRowDimension(), numBasis);
+		List<RealVector> means = kMeans(numBasis);
+		for (int i = 0; i < X.getRowDimension(); i++) {
+			RealVector xi = X.getRowVector(i);
+			RealVector vetorLinhaPHI2 = new ArrayRealVector(numBasis);
+			for (int b = 0; b < numBasis; b++) {
+				double valor = phi2(xi, means.get(b));
+				vetorLinhaPHI2.setEntry(b, valor);
+			}
+			PHI2.setRowVector(i, vetorLinhaPHI2);
+		}
+		
+		return PHI2;
+	}
 	
 }
