@@ -8,6 +8,9 @@ import org.apache.commons.math3.linear.RealVector;
 
 import br.ufc.arida.bcl.rp20152.arquivos.FileHandler;
 import br.ufc.arida.bcl.rp20152.entidades.Matriz;
+import weka.clusterers.SimpleKMeans;
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
 
 public class Exercicio6Functions {
 	
@@ -85,5 +88,22 @@ public class Exercicio6Functions {
 		return vetorDataCValidationOutput;
 	}
 	
+	public void kMeans(int numeroDeClusters) {
+		SimpleKMeans kMeans = new SimpleKMeans();
+		
+		try {
+			kMeans.setNumClusters(2);
+			Instances instancias = DataSource.read("dataC_input.csv");
+			kMeans.buildClusterer(instancias);
+			Instances centroids = kMeans.getClusterCentroids();
+			for (int i = 0; i < centroids.numInstances(); i++) {
+				System.out.println("Centroid " + centroids.instance(i));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	
 }

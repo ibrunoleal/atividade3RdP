@@ -57,6 +57,8 @@ public class Exercicio6 {
 		Grafico g = new Grafico("Lista 3", "");
 		g.adicionarSerie(listaDePontos, "");
 		g.exibirGrafico();
+		
+		f.kMeans(2);
 	}
 
 
